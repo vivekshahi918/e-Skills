@@ -21,7 +21,7 @@
 
     <!-- Custom Style CSS -->
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
-    <title>iSchool</title>
+    <title>e-Skills</title>
 
     <style>
       /* Ensure the navbar is stable and does not shift when the text changes */

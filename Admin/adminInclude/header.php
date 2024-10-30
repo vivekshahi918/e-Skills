@@ -66,12 +66,6 @@
        </a>
       </li>
       <li class="nav-item">
-       <a class="nav-link <?php if(PAGE == 'paymentstatus') {echo 'active';} ?>" href="adminPaymentStatus.php">
-        <i class="fas fa-table"></i>
-        Payment Status
-       </a>
-      </li>
-      <li class="nav-item">
        <a class="nav-link <?php if(PAGE == 'feedback') {echo 'active';} ?>" href="feedback.php">
         <i class="fab fa-accessible-icon"></i>
         Feedback
