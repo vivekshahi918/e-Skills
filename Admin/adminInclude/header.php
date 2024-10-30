@@ -23,10 +23,11 @@
 </head>
 
 <body>
- <!-- Top Navbar -->
- <nav class="navbar navbar-dark fixed-top p-0 shadow" style="background-color: #225470;">
+ <div style="background-color: #225470;">
+ <nav class="navbar navbar-dark  p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="adminDashboard.php">e-Skills <small class="text-white">Admin Area</small></a> 
  </nav>
+ </div>
 
  <!-- Side Bar -->
  <div class="container-fluid mb-5" style="margin-top:40px;">

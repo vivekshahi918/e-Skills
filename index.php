@@ -51,6 +51,25 @@
         if($result->num_rows > 0){ 
           while($row = $result->fetch_assoc()){
             $course_id = $row['course_id'];
+            $stuLogEmail = $_SESSION['stuLogEmail'] ?? '';
+
+            // Check if the course is already purchased by the logged-in user
+            $checkOrderSql = "SELECT * FROM courseorder WHERE stu_email = '$stuLogEmail' AND course_id = '$course_id' AND status = 'success'";
+            $orderResult = $conn->query($checkOrderSql);
+
+            // Set button text and link based on purchase status
+            if ($orderResult->num_rows > 0) {
+              // If purchased, set to "Open" button with a link to the course page
+              $buttonText = "Open";
+              $buttonLink = "student/watchcourse.php?course_id=$course_id";
+              $buttonClass = "btn-success"; // styling for "Open" button
+            } else {
+              // If not purchased, set to "Enroll" button with a link to course details
+              $buttonText = "Enroll";
+              $buttonLink = "coursedetails.php?course_id=$course_id";
+              $buttonClass = "btn-primary"; // styling for "Enroll" button
+            }
+
             echo '
             <a href="coursedetails.php?course_id='.$course_id.'" class="btn" style="text-align: left; padding:0px; margin:0px;">
               <div class="card">
@@ -60,14 +79,16 @@
                   <p class="card-text">'.$row['course_desc'].'</p>
                 </div>
                 <div class="card-footer">
-                  <p class="card-text d-inline">Price: <small><del>&#8377 '.$row['course_original_price'].'</del></small> <span class="font-weight-bolder">&#8377 '.$row['course_price'].'<span></p> <a class="btn btn-primary text-white font-weight-bolder float-right" href="coursedetails.php?course_id='.$course_id.'">Enroll</a>
+                  <p class="card-text d-inline">Price: <small><del>&#8377 '.$row['course_original_price'].'</del></small> 
+                  <span class="font-weight-bolder">&#8377 '.$row['course_price'].'<span></p> 
+                  <a class="btn '.$buttonClass.' text-white font-weight-bolder float-right" href="'.$buttonLink.'">'.$buttonText.'</a>
                 </div>
               </div>
-            </a>  ';
+            </a>';
           }
         }
         ?>   
-      </div>  <!-- End Most Popular Course 1st Card Deck -->   
+      </div>   <!-- End Most Popular Course 1st Card Deck -->   
       <div class="card-deck mt-4"> <!-- Start Most Popular Course 2nd Card Deck -->
         <?php
           $sql = "SELECT * FROM course LIMIT 3,3";
@@ -75,23 +96,45 @@
           if($result->num_rows > 0){ 
             while($row = $result->fetch_assoc()){
               $course_id = $row['course_id'];
+              $stuLogEmail = $_SESSION['stuLogEmail'] ?? '';
+
+              // Check if the course is already purchased by the logged-in user
+              $checkOrderSql = "SELECT * FROM courseorder WHERE stu_email = '$stuLogEmail' AND course_id = '$course_id' AND status = 'success'";
+              $orderResult = $conn->query($checkOrderSql);
+
+              // Set button text and link based on purchase status
+              if ($orderResult->num_rows > 0) {
+                // If purchased, set to "Open" button with a link to the course page
+                $buttonText = "Open";
+                $buttonLink = "student/watchcourse.php?course_id=$course_id";
+                $buttonClass = "btn-success"; // styling for "Open" button
+              } else {
+                // If not purchased, set to "Enroll" button with a link to course details
+                $buttonText = "Enroll";
+                $buttonLink = "coursedetails.php?course_id=$course_id";
+                $buttonClass = "btn-primary"; // styling for "Enroll" button
+              }
+
               echo '
-                <a href="coursedetails.php?course_id='.$course_id.'"  class="btn" style="text-align: left; padding:0px;">
-                  <div class="card">
-                    <img src="'.str_replace('..', '.', $row['course_img']).'" class="card-img-top" alt="Guitar" />
-                    <div class="card-body">
-                      <h5 class="card-title">'.$row['course_name'].'</h5>
-                      <p class="card-text">'.$row['course_desc'].'</p>
-                    </div>
-                    <div class="card-footer">
-                      <p class="card-text d-inline">Price: <small><del>&#8377 '.$row['course_original_price'].'</del></small> <span class="font-weight-bolder">&#8377 '.$row['course_price'].'<span></p> <a class="btn btn-primary text-white font-weight-bolder float-right" href="#">Enroll</a>
-                    </div>
+              <a href="coursedetails.php?course_id='.$course_id.'" class="btn" style="text-align: left; padding:0px; margin:0px;">
+                <div class="card">
+                  <img src="'.str_replace('..', '.', $row['course_img']).'" class="card-img-top" alt="Course Image" />
+                  <div class="card-body">
+                    <h5 class="card-title">'.$row['course_name'].'</h5>
+                    <p class="card-text">'.$row['course_desc'].'</p>
                   </div>
-                </a>  ';
+                  <div class="card-footer">
+                    <p class="card-text d-inline">Price: <small><del>&#8377 '.$row['course_original_price'].'</del></small> 
+                    <span class="font-weight-bolder">&#8377 '.$row['course_price'].'<span></p> 
+                    <a class="btn '.$buttonClass.' text-white font-weight-bolder float-right" href="'.$buttonLink.'">'.$buttonText.'</a>
+                  </div>
+                </div>
+              </a>';
             }
           }
         ?>
-      </div>   <!-- End Most Popular Course 2nd Card Deck --> 
+      </div> <!-- End Most Popular Course 2nd Card Deck -->
+ <!-- End Most Popular Course 2nd Card Deck --> 
       <div class="text-center m-2">
         <a class="btn btn-danger btn-sm" href="courses.php">View All Course</a> 
       </div>
@@ -136,18 +179,6 @@
 
     <div class="container-fluid bg-danger"> <!-- Start Social Follow -->
         <div class="row text-white text-center p-1">
-          <div class="col-sm">
-            <a class="text-white social-hover" href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
-          </div>
-          <div class="col-sm">
-            <a class="text-white social-hover" href="#"><i class="fab fa-twitter"></i> Twitter</a>
-          </div>
-          <div class="col-sm">
-            <a class="text-white social-hover" href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-          </div>
-          <div class="col-sm">
-            <a class="text-white social-hover" href="#"><i class="fab fa-instagram"></i> Instagram</a>
-          </div>
         </div>
     </div> <!-- End Social Follow -->
 

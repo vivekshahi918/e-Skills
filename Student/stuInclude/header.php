@@ -42,10 +42,11 @@ include_once('../dbConnection.php');
 </head>
 
 <body>
- <!-- Top Navbar -->
- <nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow" style="background-color: #225470;">
+ <div style="background-color: #225470;">
+ <nav class="navbar navbar-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="studentProfile.php">e-Skills</a>
  </nav>
+ </div>
 
  <!-- Side Bar -->
  <div class="container-fluid mb-5 " style="margin-top:40px;">
