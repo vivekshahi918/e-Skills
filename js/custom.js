@@ -1,6 +1,5 @@
 $(document).ready(function() {
-  // executes when HTML-Document is loaded and DOM is ready
-  // Most Popular Course Card Hover Effect
+
   $(".card").hover(
     function() {
       $(this)
@@ -12,8 +11,6 @@ $(document).ready(function() {
     }
   );
 
-  // Change Navbar Color on Scroll
-  // $(window).scrollTop() returns the position of the top of the page
   $(window).scroll(function() {
     if ($(window).scrollTop() >= 600) {
       $(".navbar").css("background-color", "#225470");

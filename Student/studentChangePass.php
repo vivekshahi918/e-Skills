@@ -1,34 +1,34 @@
 <?php
-if(!isset($_SESSION)){ 
-  session_start(); 
+if (!isset($_SESSION)) {
+  session_start();
 }
 define('TITLE', 'Change Password');
 define('PAGE', 'studentChangePass');
-include('./stuInclude/header.php'); 
+include('./stuInclude/header.php');
 include_once('../dbConnection.php');
 
- if(isset($_SESSION['is_login'])){
+if (isset($_SESSION['is_login'])) {
   $stuEmail = $_SESSION['stuLogEmail'];
- } else {
+} else {
   echo "<script> location.href='../index.php'; </script>";
- }
+}
 
- if(isset($_REQUEST['stuPassUpdateBtn'])){
-  if(($_REQUEST['stuNewPass'] == "")){
-   $passmsg = '<div class="alert alert-warning col-sm-6 ml-5 mt-2" role="alert"> Fill All Fileds </div>';
+if (isset($_REQUEST['stuPassUpdateBtn'])) {
+  if (($_REQUEST['stuNewPass'] == "")) {
+    $passmsg = '<div class="alert alert-warning col-sm-6 ml-5 mt-2" role="alert"> Fill All Fileds </div>';
   } else {
     $sql = "SELECT * FROM student WHERE stu_email='$stuEmail'";
     $result = $conn->query($sql);
-    if($result->num_rows == 1){
-     $stuPass = $_REQUEST['stuNewPass'];
-     $sql = "UPDATE student SET stu_pass = '$stuPass' WHERE stu_email = '$stuEmail'";
-      if($conn->query($sql) == TRUE){
-       $passmsg = '<div class="alert alert-success col-sm-6 ml-5 mt-2" role="alert"> Updated Successfully </div>';
+    if ($result->num_rows == 1) {
+      $stuPass = $_REQUEST['stuNewPass'];
+      $sql = "UPDATE student SET stu_pass = '$stuPass' WHERE stu_email = '$stuEmail'";
+      if ($conn->query($sql) == TRUE) {
+        $passmsg = '<div class="alert alert-success col-sm-6 ml-5 mt-2" role="alert"> Updated Successfully </div>';
       } else {
-       $passmsg = '<div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert"> Unable to Update </div>';
+        $passmsg = '<div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert"> Unable to Update </div>';
       }
     }
-   }
+  }
 }
 
 ?>
@@ -47,7 +47,9 @@ include_once('../dbConnection.php');
         </div>
         <button type="submit" class="btn btn-primary mr-4 mt-4" name="stuPassUpdateBtn">Update</button>
         <button type="reset" class="btn btn-secondary mt-4">Reset</button>
-        <?php if(isset($passmsg)) {echo $passmsg; } ?>
+        <?php if (isset($passmsg)) {
+          echo $passmsg;
+        } ?>
       </form>
 
     </div>
@@ -55,8 +57,8 @@ include_once('../dbConnection.php');
   </div>
 </div>
 
- </div> 
+</div>
 
 <?php
-include('./stuInclude/footer.php'); 
+include('./stuInclude/footer.php');
 ?>

@@ -10,7 +10,7 @@ function checkAdminLogin() {
       adminLogEmail: adminLogEmail,
       adminLogPass: adminLogPass
     },
-    success: function(data) {
+    success: function (data) {
       console.log(data);
       if (data == 0) {
         $("#statusAdminLogMsg").html(

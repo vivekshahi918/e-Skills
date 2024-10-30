@@ -2,19 +2,19 @@
 include('./dbConnection.php');
 include('./mainInclude/header.php');
 
-if (!isset($_SESSION)) { 
-    session_start(); 
+if (!isset($_SESSION)) {
+    session_start();
 }
 
 
 if (isset($_GET['course_id'])) {
     $course_id = $_GET['course_id'];
     $_SESSION['course_id'] = $course_id;
-    
+
     $sql = "SELECT * FROM course WHERE course_id = '$course_id'";
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) { 
+    if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             echo ' 
                 <div class="container mt-5">
@@ -90,6 +90,6 @@ if (isset($_GET['course_id'])) {
     </div>
 </div>
 
-<?php  
-include('./mainInclude/footer.php'); 
+<?php
+include('./mainInclude/footer.php');
 ?>

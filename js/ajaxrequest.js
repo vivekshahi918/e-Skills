@@ -1,6 +1,6 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Ajax Call for Already Exists Email Verification
-  $("#stuemail").on("keypress blur", function() {
+  $("#stuemail").on("keypress blur", function () {
     var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
     var stuemail = $("#stuemail").val();
     $.ajax({
@@ -10,7 +10,7 @@ $(document).ready(function() {
         checkemail: "checkmail",
         stuemail: stuemail
       },
-      success: function(data) {
+      success: function (data) {
         console.log(data);
         if (data != 0) {
           $("#statusMsg2").html(
@@ -37,14 +37,14 @@ $(document).ready(function() {
     });
   });
   // Checking name on keypress
-  $("#stuname").keypress(function() {
+  $("#stuname").keypress(function () {
     var stuname = $("#stuname").val();
     if (stuname !== "") {
       $("#statusMsg1").html(" ");
     }
   });
   // Checking Password on keypress
-  $("#stupass").keypress(function() {
+  $("#stupass").keypress(function () {
     var stupass = $("#stupass").val();
     if (stupass !== "") {
       $("#statusMsg3").html(" ");
@@ -88,19 +88,18 @@ function addStu() {
       url: "Student/addstudent.php",
       type: "post",
       data: {
-        // assigned stusignup value just to check all iz well
+
         stusignup: "stusignup",
         stuname: stuname,
         stuemail: stuemail,
         stupass: stupass
       },
-      success: function(data) {
+      success: function (data) {
         console.log(data);
         if (data == "OK") {
           $("#successMsg").html(
             '<span class="alert alert-success"> Registration Successful ! </span>'
           );
-          // making field empty after signup
           clearStuRegField();
         } else if (data == "Failed") {
           $("#successMsg").html(
@@ -137,7 +136,7 @@ function checkStuLogin() {
       stuLogEmail: stuLogEmail,
       stuLogPass: stuLogPass
     },
-    success: function(data) {
+    success: function (data) {
       console.log(data);
       if (data == 0) {
         $("#statusLogMsg").html(

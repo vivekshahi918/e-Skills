@@ -6,8 +6,6 @@ $db_name = "lms_db";
 
 $conn = new mysqli($db_host, $db_user, $db_password, $db_name);
 
-if($conn->connect_error) {
- die("connection failed");
-} 
-
-?>
+if ($conn->connect_error) {
+    die("connection failed");
+}

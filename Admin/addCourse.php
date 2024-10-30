@@ -1,45 +1,40 @@
 <?php
-if(!isset($_SESSION)){ 
-  session_start(); 
+if (!isset($_SESSION)) {
+  session_start();
 }
 define('TITLE', 'Add Course');
 define('PAGE', 'addCourse');
-include('./adminInclude/header.php'); 
+include('./adminInclude/header.php');
 include('../dbConnection.php');
 
- if(isset($_SESSION['is_admin_login'])){
+if (isset($_SESSION['is_admin_login'])) {
   $adminEmail = $_SESSION['adminLogEmail'];
- } else {
+} else {
   echo "<script> location.href='../index.php'; </script>";
- }
- if(isset($_REQUEST['courseSubmitBtn'])){
-  // Checking for Empty Fields
-  if(($_REQUEST['course_name'] == "") || ($_REQUEST['course_desc'] == "") || ($_REQUEST['course_author'] == "") || ($_REQUEST['course_duration'] == "") || ($_REQUEST['course_price'] == "") || ($_REQUEST['course_original_price'] == "")){
-   // msg displayed if required field missing
-   $msg = '<div class="alert alert-warning col-sm-6 ml-5 mt-2" role="alert"> Fill All Fileds </div>';
+}
+if (isset($_REQUEST['courseSubmitBtn'])) {
+  if (($_REQUEST['course_name'] == "") || ($_REQUEST['course_desc'] == "") || ($_REQUEST['course_author'] == "") || ($_REQUEST['course_duration'] == "") || ($_REQUEST['course_price'] == "") || ($_REQUEST['course_original_price'] == "")) {
+    $msg = '<div class="alert alert-warning col-sm-6 ml-5 mt-2" role="alert"> Fill All Fileds </div>';
   } else {
-   // Assigning User Values to Variable
-   $course_name = $_REQUEST['course_name'];
-   $course_desc = $_REQUEST['course_desc'];
-   $course_author = $_REQUEST['course_author'];
-   $course_duration = $_REQUEST['course_duration'];
-   $course_price = $_REQUEST['course_price'];
-   $course_original_price = $_REQUEST['course_original_price'];
-   $course_image = $_FILES['course_img']['name']; 
-   $course_image_temp = $_FILES['course_img']['tmp_name'];
-   $img_folder = '../image/courseimg/'. $course_image; 
-   move_uploaded_file($course_image_temp, $img_folder);
+    $course_name = $_REQUEST['course_name'];
+    $course_desc = $_REQUEST['course_desc'];
+    $course_author = $_REQUEST['course_author'];
+    $course_duration = $_REQUEST['course_duration'];
+    $course_price = $_REQUEST['course_price'];
+    $course_original_price = $_REQUEST['course_original_price'];
+    $course_image = $_FILES['course_img']['name'];
+    $course_image_temp = $_FILES['course_img']['tmp_name'];
+    $img_folder = '../image/courseimg/' . $course_image;
+    move_uploaded_file($course_image_temp, $img_folder);
     $sql = "INSERT INTO course (course_name, course_desc, course_author, course_img, course_duration, course_price, course_original_price) VALUES ('$course_name', '$course_desc','$course_author', '$img_folder', '$course_duration', '$course_price', '$course_original_price')";
-    if($conn->query($sql) == TRUE){
-     // below msg display on form submit success
-     $msg = '<div class="alert alert-success col-sm-6 ml-5 mt-2" role="alert"> Course Added Successfully </div>';
+    if ($conn->query($sql) == TRUE) {
+      $msg = '<div class="alert alert-success col-sm-6 ml-5 mt-2" role="alert"> Course Added Successfully </div>';
     } else {
-     // below msg display on form submit failed
-     $msg = '<div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert"> Unable to Add Course </div>';
+      $msg = '<div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert"> Unable to Add Course </div>';
     }
   }
-  }
- ?>
+}
+?>
 <div class="col-sm-6 mt-5  mx-3 jumbotron">
   <h3 class="text-center">Add New Course</h3>
   <form action="" method="POST" enctype="multipart/form-data">
@@ -75,10 +70,11 @@ include('../dbConnection.php');
       <button type="submit" class="btn btn-danger" id="courseSubmitBtn" name="courseSubmitBtn">Submit</button>
       <a href="courses.php" class="btn btn-secondary">Close</a>
     </div>
-    <?php if(isset($msg)) {echo $msg; } ?>
+    <?php if (isset($msg)) {
+      echo $msg;
+    } ?>
   </form>
 </div>
-<!-- Only Number for input fields -->
 <script>
   function isInputNumber(evt) {
     var ch = String.fromCharCode(evt.which);
@@ -87,9 +83,9 @@ include('../dbConnection.php');
     }
   }
 </script>
-</div> 
-</div> 
+</div>
+</div>
 
 <?php
-include('./adminInclude/footer.php'); 
+include('./adminInclude/footer.php');
 ?>
