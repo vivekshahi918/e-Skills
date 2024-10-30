@@ -214,9 +214,6 @@ ALTER TABLE `lesson`
 ALTER TABLE `student`
   ADD PRIMARY KEY (`stu_id`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
 --
 -- AUTO_INCREMENT for table `admin`

@@ -4,10 +4,10 @@ session_start();
 if (!isset($_SESSION['stuLogEmail'])) {
     echo "<script> location.href='loginorsignup.php'; </script>";
 } else {
-    // Get the values from the previous form
+    
     $orderId = $_POST['ORDER_ID'];
     $custId = $_POST['CUST_ID'];
-    $txnAmount = $_POST['TXN_AMOUNT'];
+    $txnAmount = $_POST['TXN_AMOUNT']/85;
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -20,44 +20,44 @@ if (!isset($_SESSION['stuLogEmail'])) {
         <title>Payment</title>
         <script src="https://js.stripe.com/v3/"></script>
         <style>
-      /* Custom styling */
-      .payment-container {
-        max-width: 400px;
-        margin: 50px auto;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-      }
-      .payment-container h3 {
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 20px;
-      }
-      .form-group label {
-        font-weight: 600;
-      }
-      #card-element {
-        padding: 10px;
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-        background-color: #f9f9f9;
-      }
-      #card-errors {
-        color: #e3342f;
-        margin-top: 10px;
-      }
-      .btn-primary {
-        width: 100%;
-        background-color: #007bff;
-        border: none;
-      }
-      .btn-secondary {
-        width: 100%;
-        margin-top: 10px;
-      }
-    </style>
+      
+            .payment-container {
+                max-width: 400px;
+                margin: 50px auto;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+            }
+            .payment-container h3 {
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .form-group label {
+                font-weight: 600;
+            }
+            #card-element {
+                padding: 10px;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+                background-color: #f9f9f9;
+            }
+            #card-errors {
+                color: #e3342f;
+                margin-top: 10px;
+            }
+            .btn-primary {
+                width: 100%;
+                background-color: #007bff;
+                border: none;
+            }
+            .btn-secondary {
+                width: 100%;
+                margin-top: 10px;
+            }
+        </style>
     </head>
     <body>
     <div class="container mt-5">
@@ -84,7 +84,7 @@ if (!isset($_SESSION['stuLogEmail'])) {
                     <div id="card-errors" role="alert"></div>
                 </div>
 
-                <button type="submit" class="btn btn-primary mt-3">Pay Now - $<?php echo $txnAmount / 85; ?></button>
+                <button type="submit" class="btn btn-primary mt-3">Pay Now - $<?php echo $txnAmount ; ?></button>
                 <a href="./checkout.php" class="btn btn-secondary mt-2">Back</a>
             </form>
             <small class="form-text text-muted text-center mt-3">Note: Complete Payment by Clicking Pay Now</small>

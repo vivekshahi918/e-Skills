@@ -4,10 +4,8 @@ if(!isset($_SESSION)){
 }
 include_once('../dbConnection.php');
 
-// setting header type to json, We'll be outputting a Json data
 header('Content-type: application/json');
 
-// Checking Email already Registered
 if(isset($_POST['stuemail']) && isset($_POST['checkemail'])){
   $stuemail = $_POST['stuemail'];
   $sql = "SELECT stu_email FROM student WHERE stu_email='".$stuemail."'";
@@ -16,7 +14,6 @@ if(isset($_POST['stuemail']) && isset($_POST['checkemail'])){
   echo json_encode($row);
   }
  
-  // Inserting or Adding New Student
   if(isset($_POST['stusignup']) && isset($_POST['stuname']) && isset($_POST['stuemail']) && isset($_POST['stupass'])){
     $stuname = $_POST['stuname'];
     $stuemail = $_POST['stuemail'];
@@ -29,7 +26,6 @@ if(isset($_POST['stuemail']) && isset($_POST['checkemail'])){
     }
   }
 
-  // Student Login Verification
   if(!isset($_SESSION['is_login'])){
     if(isset($_POST['checkLogemail']) && isset($_POST['stuLogEmail']) && isset($_POST['stuLogPass'])){
       $stuLogEmail = $_POST['stuLogEmail'];

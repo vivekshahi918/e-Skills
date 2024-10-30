@@ -9,7 +9,6 @@ include_once('../dbConnection.php');
 
 if (isset($_SESSION['is_login'])) {
     $stuLogEmail = $_SESSION['stuLogEmail'];
-    // Debugging output
     error_log("Logged-in user email: $stuLogEmail");
 } else {
     echo "<script> location.href='../index.php'; </script>";
@@ -22,7 +21,6 @@ if (isset($_SESSION['is_login'])) {
             <h4 class="text-center">All Courses</h4>
             <?php 
             if (isset($stuLogEmail)) {
-                // Fetch courses for the logged-in student
                 $sql = "SELECT co.order_id, c.course_id, c.course_name, c.course_duration, c.course_desc, c.course_img, c.course_author, c.course_original_price, c.course_price 
                         FROM courseorder AS co 
                         JOIN course AS c ON c.course_id = co.course_id 
@@ -30,7 +28,6 @@ if (isset($_SESSION['is_login'])) {
                 
                 $result = $conn->query($sql);
                 
-                // Check if there are any courses
                 if ($result && $result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) { ?>
                         <div class="bg-light mb-3">
@@ -53,7 +50,6 @@ if (isset($_SESSION['is_login'])) {
                         </div>
                     <?php }
                 } else {
-                    // Check for query error
                     if ($result) {
                         echo "<p class='text-center'>You have not enrolled in any courses yet.</p>";
                     } else {
@@ -67,7 +63,7 @@ if (isset($_SESSION['is_login'])) {
     </div>
 </div>
 
-</div> <!-- Close Row Div from header file -->
+</div> 
 <?php
 include('./stuInclude/footer.php'); 
 ?>

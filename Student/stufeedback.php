@@ -22,18 +22,14 @@ include_once('../dbConnection.php');
 
 if(isset($_REQUEST['submitFeedbackBtn'])){
   if(($_REQUEST['f_content'] == "")){
-   // msg displayed if required field missing
    $passmsg = '<div class="alert alert-warning col-sm-6 ml-5 mt-2" role="alert"> Fill All Fields </div>';
   } else {
-   // Escape special characters in feedback content
    $fcontent = mysqli_real_escape_string($conn, $_REQUEST["f_content"]);
    $sql = "INSERT INTO feedback (f_content, stu_id) VALUES ('$fcontent', '$stuId')";
    
    if($conn->query($sql) === TRUE){
-     // below msg display on form submit success
      $passmsg = '<div class="alert alert-success col-sm-6 ml-5 mt-2" role="alert"> Submitted Successfully </div>';
    } else {
-     // below msg display on form submit failed
      $passmsg = '<div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert"> Unable to Submit </div>';
    }
   }
@@ -56,7 +52,7 @@ if(isset($_REQUEST['submitFeedbackBtn'])){
   </form>
  </div>
 
- </div> <!-- Close Row Div from header file -->
+ </div> 
 
  <?php
 include('./stuInclude/footer.php'); 

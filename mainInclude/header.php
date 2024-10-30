@@ -4,29 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    
-    <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
-    <!-- Font Awesome CSS -->
     <link rel="stylesheet" type="text/css" href="css/all.min.css">
 
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
-    <!-- Student Testimonial Owl Slider CSS -->
     <link rel="stylesheet" type="text/css" href="css/owl.min.css">
     <link rel="stylesheet" type="text/css" href="css/owl.theme.min.css">
     <link rel="stylesheet" type="text/css" href="css/testyslider.css">
 
-    <!-- Custom Style CSS -->
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
     <title>e-Skills</title>
 
     <style>
-      /* Ensure the navbar is stable and does not shift when the text changes */
       .navbar-text {
-        min-width: 200px; /* Adjust as needed to fit the longest phrase */
+        min-width: 200px; 
         text-align: center;
       }
       .op{
@@ -62,7 +56,6 @@
     </nav>
     </div> <!-- End Navigation -->
 
-    <!-- JavaScript for changing text dynamically -->
     <script>
       const phrases = ["See that",
                       "Think about",

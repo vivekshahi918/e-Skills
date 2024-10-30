@@ -1,17 +1,16 @@
 <?php
   include('./dbConnection.php');
-  // Header Include from mainInclude 
   include('./mainInclude/header.php'); 
 ?>  
-<div class="container-fluid bg-dark"> <!-- Start Course Page Banner -->
+<div class="container-fluid bg-dark"> 
   <div class="row">
     <img src="./image/coursebanner.jpg" alt="courses" style="height:500px; width:100%; object-fit:cover; box-shadow:10px;"/>
   </div> 
-</div> <!-- End Course Page Banner -->
+</div> 
 
-<div class="container mt-5"> <!-- Start All Course -->
+<div class="container mt-5"> 
   <h1 class="text-center">All Courses</h1>
-  <div class="row mt-4"> <!-- Start All Course Row -->
+  <div class="row mt-4"> 
   <?php
       $sql = "SELECT * FROM course";
       $result = $conn->query($sql);
@@ -20,21 +19,17 @@
           $course_id = $row['course_id'];
           $stuLogEmail = $_SESSION['stuLogEmail'] ?? '';
 
-          // Check if the course is already purchased by the logged-in user
           $checkOrderSql = "SELECT * FROM courseorder WHERE stu_email = '$stuLogEmail' AND course_id = '$course_id' AND status = 'success'";
           $orderResult = $conn->query($checkOrderSql);
 
-          // Set button text and link based on purchase status
           if ($orderResult->num_rows > 0) {
-            // If purchased, set to "Open" button with a link to the course page
             $buttonText = "Open";
             $buttonLink = "watchcourse.php?course_id=$course_id";
-            $buttonClass = "btn-success"; // styling for "Open" button
+            $buttonClass = "btn-success"; 
           } else {
-            // If not purchased, set to "Enroll" button with a link to course details
             $buttonText = "Enroll";
             $buttonLink = "coursedetails.php?course_id=$course_id";
-            $buttonClass = "btn-primary"; // styling for "Enroll" button
+            $buttonClass = "btn-primary";
           }
 
           echo ' 
@@ -58,11 +53,10 @@
         }
       }
     ?> 
-    </div><!-- End All Course Row -->   
-  </div><!-- End All Course -->   
+    </div>
+  </div>   
  
 <?php 
-  // Contact Us
   include('./contact.php'); 
 ?> 
 <div class="container-fluid mt-5" style="background-color: #4B7289" id="Feedback">
@@ -94,14 +88,14 @@
             </div>
           </div>
         </div>
-    </div>  <!-- End Students Testimonial -->
+    </div> 
 
-    <div class="container-fluid bg-danger"> <!-- Start Social Follow -->
+    <div class="container-fluid bg-danger"> 
         <div class="row text-white text-center p-1">
         </div>
     </div>
 
 <?php 
-  // Footer Include from mainInclude 
+   
   include('./mainInclude/footer.php'); 
 ?>

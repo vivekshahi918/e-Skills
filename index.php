@@ -1,9 +1,8 @@
 <?php
   include('./dbConnection.php');
-  // Header Include from mainInclude 
+  
   include('./mainInclude/header.php'); 
 ?>  
-    <!-- Start Video Background-->
     <div class="container-fluid remove-vid-marg">
       <div class="vid-parent">
         <video playsinline autoplay muted loop>
@@ -23,9 +22,9 @@
           ?> 
        
       </div>
-    </div> <!-- End Video Background -->
+    </div>
 
-    <div class="container-fluid bg-danger txt-banner"> <!-- Start Text Banner -->
+    <div class="container-fluid bg-danger txt-banner">
         <div class="row bottom-banner">
           <div class="col-sm">
             <h5> <i class="fas fa-book-open mr-3"></i> 100+ Online Courses</h5>
@@ -40,11 +39,11 @@
             <h5><i class="fas fa-rupee-sign mr-3"></i> Money Back Guarantee*</h5>
           </div>
         </div>
-    </div> <!-- End Text Banner -->
+    </div> 
     
-    <div class="container mt-5"> <!-- Start Most Popular Course -->
+    <div class="container mt-5"> 
       <h1 class="text-center">Popular Course</h1>
-      <div class="card-deck mt-4"> <!-- Start Most Popular Course 1st Card Deck -->
+      <div class="card-deck mt-4"> 
         <?php
         $sql = "SELECT * FROM course LIMIT 3";
         $result = $conn->query($sql);
@@ -53,21 +52,18 @@
             $course_id = $row['course_id'];
             $stuLogEmail = $_SESSION['stuLogEmail'] ?? '';
 
-            // Check if the course is already purchased by the logged-in user
+            
             $checkOrderSql = "SELECT * FROM courseorder WHERE stu_email = '$stuLogEmail' AND course_id = '$course_id' AND status = 'success'";
             $orderResult = $conn->query($checkOrderSql);
 
-            // Set button text and link based on purchase status
             if ($orderResult->num_rows > 0) {
-              // If purchased, set to "Open" button with a link to the course page
               $buttonText = "Open";
               $buttonLink = "student/watchcourse.php?course_id=$course_id";
-              $buttonClass = "btn-success"; // styling for "Open" button
+              $buttonClass = "btn-success"; 
             } else {
-              // If not purchased, set to "Enroll" button with a link to course details
               $buttonText = "Enroll";
               $buttonLink = "coursedetails.php?course_id=$course_id";
-              $buttonClass = "btn-primary"; // styling for "Enroll" button
+              $buttonClass = "btn-primary"; 
             }
 
             echo '
@@ -88,8 +84,8 @@
           }
         }
         ?>   
-      </div>   <!-- End Most Popular Course 1st Card Deck -->   
-      <div class="card-deck mt-4"> <!-- Start Most Popular Course 2nd Card Deck -->
+      </div>   
+      <div class="card-deck mt-4"> 
         <?php
           $sql = "SELECT * FROM course LIMIT 3,3";
           $result = $conn->query($sql);
@@ -133,19 +129,18 @@
             }
           }
         ?>
-      </div> <!-- End Most Popular Course 2nd Card Deck -->
- <!-- End Most Popular Course 2nd Card Deck --> 
+      </div> 
       <div class="text-center m-2">
         <a class="btn btn-danger btn-sm" href="courses.php">View All Course</a> 
       </div>
-    </div>  <!-- End Most Popular Course -->
+    </div>  
 
     <?php 
-    // Contact Us
+    
     include('./contact.php'); 
     ?>  
 
-     <!-- Start Students Testimonial -->
+     
       <div class="container-fluid mt-5" style="background-color: #4B7289" id="Feedback">
         <h1 class="text-center testyheading p-4"> Student's Feedback </h1>
         <div class="row">
@@ -175,14 +170,13 @@
             </div>
           </div>
         </div>
-    </div>  <!-- End Students Testimonial -->
+    </div>  
 
-    <div class="container-fluid bg-danger"> <!-- Start Social Follow -->
+    <div class="container-fluid bg-danger"> 
         <div class="row text-white text-center p-1">
         </div>
-    </div> <!-- End Social Follow -->
+    </div> 
 
-    <!-- Start About Section -->
     <div class="container-fluid p-4" style="background-color:#E9ECEF">
       <div class="container" style="background-color:#E9ECEF">
         <div class="row text-center">
@@ -204,10 +198,9 @@
           </div>
         </div>
       </div>
-    </div> <!-- End About Section -->
+    </div> 
 
   <?php 
-    // Footer Include from mainInclude 
     include('./mainInclude/footer.php'); 
     
   ?>  

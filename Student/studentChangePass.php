@@ -15,7 +15,6 @@ include_once('../dbConnection.php');
 
  if(isset($_REQUEST['stuPassUpdateBtn'])){
   if(($_REQUEST['stuNewPass'] == "")){
-   // msg displayed if required field missing
    $passmsg = '<div class="alert alert-warning col-sm-6 ml-5 mt-2" role="alert"> Fill All Fileds </div>';
   } else {
     $sql = "SELECT * FROM student WHERE stu_email='$stuEmail'";
@@ -24,10 +23,8 @@ include_once('../dbConnection.php');
      $stuPass = $_REQUEST['stuNewPass'];
      $sql = "UPDATE student SET stu_pass = '$stuPass' WHERE stu_email = '$stuEmail'";
       if($conn->query($sql) == TRUE){
-       // below msg display on form submit success
        $passmsg = '<div class="alert alert-success col-sm-6 ml-5 mt-2" role="alert"> Updated Successfully </div>';
       } else {
-       // below msg display on form submit failed
        $passmsg = '<div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert"> Unable to Update </div>';
       }
     }
@@ -58,7 +55,7 @@ include_once('../dbConnection.php');
   </div>
 </div>
 
- </div> <!-- Close Row Div from header file -->
+ </div> 
 
 <?php
 include('./stuInclude/footer.php'); 

@@ -1,18 +1,16 @@
 <?php
 include('./dbConnection.php');
-// Header Include from mainInclude 
 include('./mainInclude/header.php');
 
 if (!isset($_SESSION)) { 
     session_start(); 
 }
 
-// Check if course_id is provided in the URL
+
 if (isset($_GET['course_id'])) {
     $course_id = $_GET['course_id'];
     $_SESSION['course_id'] = $course_id;
     
-    // Retrieve course details
     $sql = "SELECT * FROM course WHERE course_id = '$course_id'";
     $result = $conn->query($sql);
 
@@ -30,16 +28,13 @@ if (isset($_GET['course_id'])) {
                                 <p class="card-text">Description: ' . $row['course_desc'] . '</p>
                                 <p class="card-text">Duration: ' . $row['course_duration'] . '</p>';
 
-            // Check if the user has purchased this course
             $stuLogEmail = $_SESSION['stuLogEmail'];
             $checkOrderSql = "SELECT * FROM courseorder WHERE stu_email = '$stuLogEmail' AND course_id = '$course_id' AND status = 'success'";
             $orderResult = $conn->query($checkOrderSql);
 
             if ($orderResult->num_rows > 0) {
-                // If course is purchased, show "Start Course" button
                 echo '<a href="http://localhost/e-Skills/student/watchcourse.php?course_id=' . $course_id . '" class="btn btn-success text-white font-weight-bolder float-right">Start Course</a>';
             } else {
-                // If course is not purchased, show "Buy Now" button
                 echo '
                     <form action="checkout.php" method="post">
                         <p class="card-text d-inline">Price: <small><del>&#8377 ' . $row['course_original_price'] . '</del></small> 
@@ -62,7 +57,6 @@ if (isset($_GET['course_id'])) {
 <div class="container mt-5">
     <div class="row">
         <?php
-        // Display lessons related to the course
         $lessonSql = "SELECT * FROM lesson WHERE course_id = '$course_id'";
         $lessonResult = $conn->query($lessonSql);
 
@@ -96,7 +90,6 @@ if (isset($_GET['course_id'])) {
     </div>
 </div>
 
-<?php 
-// Footer Include from mainInclude 
+<?php  
 include('./mainInclude/footer.php'); 
 ?>
