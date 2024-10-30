@@ -105,12 +105,12 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`f_id`, `f_content`, `stu_id`) VALUES
-(3, 'My life at iSchool made me stronger and took me a step ahead for being an independent women. I am thankful to all the teachers who supported us and corrected us throughout our career. I am very grateful to the iSchool for providing us the best of placement opportunities and finally I got placed in DC Marvel.', 171),
-(8, 'I am grateful to iSchool - both the faculty and the Training & Placement Department. They have made efforts ensuring maximum number of placed students. Due to the efforts made by the faculty and placement cell. I was able to bag a job in the second company.', 172),
-(9, 'iSchool is a place of learning, fun, culture, lore, literature and many such life preaching activities. Studying at the iSchool brought an added value to my life.', 173),
-(10, 'Think Magical, that is one thing that iSchool urges in and to far extent succeed in teaching to its students which invariably helps to achieve what you need.', 174),
-(12, 'Knowledge is power. Information is liberating. Education is the premise of progress, in every society, in every family.', 180),
-(13, 'This is Awesome GeekySHows Jindabaad', 182);
+(3, 'I love how easy it is to navigate e-Skills! The layout is clean and straightforward, which makes learning feel natural. The design also makes it easy to focus on the content without distractions.', 171),
+(8, 'The variety of skills available on this platform is impressive! I’ve been able to find everything from beginner-level tutorials to more advanced topics, and it feels like there’s always something new to learn.', 172),
+(9, 'I appreciate that the lessons are very hands-on. Instead of just reading or watching, I get to actually practice what I’m learning, which helps me retain the information better. The exercises make it feel relevant and useful!', 173),
+(10, 'Being able to track my progress is really motivating. I can see how much I’ve completed, which skills I’ve improved, and what’s left to work on. It helps me stay focused and makes the learning journey rewarding.', 174),
+
+
 
 -- --------------------------------------------------------
 

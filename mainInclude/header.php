@@ -29,11 +29,15 @@
         min-width: 200px; /* Adjust as needed to fit the longest phrase */
         text-align: center;
       }
+      .op{
+        background-color: #34495E;
+      }
     </style>
   </head>
   <body>
     <!-- Start Navigation -->
-    <nav class="navbar navbar-expand-sm navbar-dark pl-5 fixed-top">
+     <div class="op">
+    <nav class="navbar navbar-expand-sm navbar-dark pl-5">
       <a href="index.php" class="navbar-brand">e-Skills</a>
       <span class="navbar-text" id="dynamicText">Learn and Implement</span>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myMenu">
@@ -56,7 +60,8 @@
           <li class="nav-item custom-nav-item"><a href="#Contact" class="nav-link">Contact</a></li>
         </ul>
       </div>
-    </nav> <!-- End Navigation -->
+    </nav>
+    </div> <!-- End Navigation -->
 
     <!-- JavaScript for changing text dynamically -->
     <script>
