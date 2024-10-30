@@ -3,16 +3,20 @@
     <h2 class="text-center mb-4">Contact US</h2> 
     <div class="row">  
         <div class="col-md-8"> 
-            <form action="" method="post">
+            <form id="contact-form"> <!-- Add id for jQuery to target -->
                 <input type="text" class="form-control" name="name" placeholder="Name" required><br>
-                <input type="text" class="form-control" name="subject" placeholder="Subject" required><br>
+                <input type="text" class="form-control" name="phone" placeholder="Phone Number" required><br>
                 <input type="email" class="form-control" name="email" placeholder="E-mail" required><br>
                 <textarea class="form-control" name="message" placeholder="How can we help you?" style="height:150px;" required></textarea><br>
-                <input class="btn btn-primary" type="submit" value="Send" name="submit"><br><br>
+                
+                <!-- Updated Submit Button -->
+                <button type="submit" class="btn btn-primary">
+                    Submit <i class="fa fa-paper-plane"></i>
+                </button>
             </form>
-        </div> <!-- End Contact Us 1st Column-->
+        </div> <!-- End Contact Us 1st Column -->
 
-        <div class="col-md-4 stripe text-white text-center">  <!-- Start Contact Us 2nd Column-->
+        <div class="col-md-4 stripe text-white text-center"> <!-- Start Contact Us 2nd Column -->
             <h4>e-Skills</h4>
             <p>e-Skills, 
             Brahalganj, Gorakhpur, 
@@ -24,32 +28,28 @@
 </div> 
 <!-- End Contact Us -->
 
-<?php
-if(isset($_POST['submit'])){
-    // Get form data
-    $name = $_POST['name'];
-    $subject = $_POST['subject'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Include EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+<script>
+    (function() {
+        emailjs.init("5SOnPPSi0ytOVQNRS"); // Replace with your actual EmailJS user ID
+    })();
 
-    // Define the recipient email
-    $to = "vivekshahi503@gmail.com"; // Your email address
-    $headers = "From: " . $email . "\r\n" .
-               "Reply-To: " . $email . "\r\n" .
-               "X-Mailer: PHP/" . phpversion();
-    
-    // Compose email body
-    $body = "You have received a new message from the contact form on e-Skills.\n\n";
-    $body .= "Name: $name\n";
-    $body .= "Email: $email\n";
-    $body .= "Subject: $subject\n";
-    $body .= "Message:\n$message\n";
-
-    // Send the email
-    if(mail($to, $subject, $body, $headers)){
-        echo '<div class="alert alert-success">Message sent successfully!</div>';
-    } else {
-        echo '<div class="alert alert-danger">Message sending failed. Please try again later.</div>';
-    }
-}
-?>
+    // Handle form submission using jQuery
+    $("#contact-form").submit(function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        
+        // Use EmailJS to send the form data
+        emailjs.sendForm('vivekshahi503', 'template_jkmzqgs', this)
+        .then(function (response) {
+            console.log('SUCCESS!', response.status, response.text);
+            document.getElementById("contact-form").reset(); // Reset the form after successful submission
+            alert("Form Submitted Successfully");
+        }, function (error) {
+            console.log('FAILED...', error);
+            alert("Form Submission Failed! Please Try Again.");
+        });
+    });
+</script>
