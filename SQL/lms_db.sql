@@ -82,8 +82,8 @@ CREATE TABLE `courseorder` (
 --
 
 INSERT INTO `courseorder` (`co_id`, `order_id`, `stu_email`, `course_id`, `status`, `respmsg`, `amount`, `order_date`) VALUES
-(12, 'ORDS67226e59d2505', 'cap@example.com', 12, 'success', 'Payment successful', 80000, '2024-10-30'),
-(13, 'ORDS67227466085fc', 'cap@example.com', 8, 'success', 'Payment successful', 165500, '2024-10-30');
+(12, 'ORDS67226e59d2505', 'cap@example.com', 12, 'success', 'Payment successful', 800, '2024-10-30'),
+(13, 'ORDS67227466085fc', 'cap@example.com', 8, 'success', 'Payment successful', 1655, '2024-10-30');
 
 -- --------------------------------------------------------
 

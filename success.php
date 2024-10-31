@@ -14,12 +14,12 @@ session_start();
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h1>Payment Successful!</h1>
-        <p>Your payment has been processed successfully.</p>
-        <a href="download_invoice.php?order_id=<?php echo $_GET['order_id']; ?>" class="btn btn-primary">Download Invoice</a>
-        <a href="Student/myCourse.php" class="btn btn-secondary">Go to My Courses</a>
-    </div>
+<div class="container mt-5 d-flex flex-column align-items-center text-center">
+    <h1>Payment Successful!</h1>
+    <p>Your payment has been processed successfully.</p>
+    <a href="Student/myCourse.php" class="btn btn-secondary">Go to My Courses</a>
+</div>
+
 </body>
 
 </html>
