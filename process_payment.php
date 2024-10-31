@@ -10,7 +10,7 @@ require_once 'dbConnection.php';
 
 $token = $_POST['stripeToken'];
 $custId = $_POST['CUST_ID'];
-$amount = $_POST['TXN_AMOUNT'] / 85;
+$amount = $_POST['TXN_AMOUNT'] ;
 
 // Prevent using the same token multiple times
 if (!isset($_SESSION['stripe_token'])) {

@@ -105,7 +105,7 @@ INSERT INTO `feedback` (`f_id`, `f_content`, `stu_id`) VALUES
 (3, 'I love how easy it is to navigate e-Skills! The layout is clean and straightforward, which makes learning feel natural. The design also makes it easy to focus on the content without distractions.', 171),
 (8, 'The variety of skills available on this platform is impressive! I’ve been able to find everything from beginner-level tutorials to more advanced topics, and it feels like there’s always something new to learn.', 172),
 (9, 'I appreciate that the lessons are very hands-on. Instead of just reading or watching, I get to actually practice what I’m learning, which helps me retain the information better. The exercises make it feel relevant and useful!', 173),
-(10, 'Being able to track my progress is really motivating. I can see how much I’ve completed, which skills I’ve improved, and what’s left to work on. It helps me stay focused and makes the learning journey rewarding.', 174),
+(10, 'Being able to track my progress is really motivating. I can see how much I’ve completed, which skills I’ve improved, and what’s left to work on. It helps me stay focused and makes the learning journey rewarding.', 174);
 
 
 

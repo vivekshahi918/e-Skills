@@ -42,8 +42,8 @@ include('./mainInclude/header.php');
                     <p class="card-text">' . $row['course_desc'] . '</p>
                   </div>
                   <div class="card-footer">
-                    <p class="card-text d-inline">Price: <small><del>&#8377 ' . $row['course_original_price'] . '</del></small> 
-                    <span class="font-weight-bolder">&#8377 ' . $row['course_price'] . '<span></p> 
+                    <p class="card-text d-inline">Price: <small><del>$ ' . $row['course_original_price'] . '</del></small> 
+                    <span class="font-weight-bolder">$ ' . $row['course_price'] . '<span></p> 
                     <a class="btn ' . $buttonClass . ' text-white font-weight-bolder float-right" href="' . $buttonLink . '">' . $buttonText . '</a>
                   </div>
                 </div>

@@ -37,8 +37,8 @@ if (isset($_GET['course_id'])) {
             } else {
                 echo '
                     <form action="checkout.php" method="post">
-                        <p class="card-text d-inline">Price: <small><del>&#8377 ' . $row['course_original_price'] . '</del></small> 
-                        <span class="font-weight-bolder">&#8377 ' . $row['course_price'] . '</span></p>
+                        <p class="card-text d-inline">Price: <small><del>$ ' . $row['course_original_price'] . '</del></small> 
+                        <span class="font-weight-bolder">$ ' . $row['course_price'] . '</span></p>
                         <input type="hidden" name="id" value="' . $row["course_price"] . '">
                         <button type="submit" class="btn btn-primary text-white font-weight-bolder float-right" name="buy">Buy Now</button>
                     </form>';

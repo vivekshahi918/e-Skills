@@ -7,7 +7,7 @@ if (!isset($_SESSION['stuLogEmail'])) {
 
     $orderId = $_POST['ORDER_ID'];
     $custId = $_POST['CUST_ID'];
-    $txnAmount = $_POST['TXN_AMOUNT'] / 85;
+    $txnAmount = $_POST['TXN_AMOUNT'];
 ?>
     <!DOCTYPE html>
     <html lang="en">
