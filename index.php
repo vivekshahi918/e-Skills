@@ -8,20 +8,20 @@ include('./mainInclude/header.php');
     <video playsinline autoplay muted loop>
       <source src="video/b2.mp4" />
     </video>
-    <div class="vid-overlay"></div>
-  </div>
-  <div class="vid-content">
-    <h1 class="my-content">Welcome to e-Skills</h1>
-    <small class="my-content">The future belongs to those who believe in the beauty of their skills.</small><br />
-    <?php
-    if (!isset($_SESSION['is_login'])) {
-      echo '<a class="btn btn-danger mt-3" href="#" data-toggle="modal" data-target="#stuRegModalCenter">Get Started</a>';
-    } else {
-      echo '<a class="btn btn-primary mt-3" href="student/studentProfile.php">My Profile</a>';
-    }
-    ?>
+    <div class="vid-overlay">
+      <div class="vid-content">
+        <h1 class="my-content">Welcome to e-Skills</h1>
+        <small class="my-content">The future belongs to those who believe in the beauty of their skills.</small><br />
+        <?php
+        if (!isset($_SESSION['is_login'])) {
+          echo '<a class="btn btn-danger mt-3" href="#" data-toggle="modal" data-target="#stuRegModalCenter">Get Started</a>';
+        } else {
+          echo '<a class="btn btn-primary mt-3" href="Student/studentProfile.php">My Profile</a>';
+        }
+        ?>
+      </div>
+    </div>
 
-  </div>
 </div>
 
 <div class="container-fluid bg-danger txt-banner">
@@ -182,11 +182,11 @@ include('./contact.php');
   <div class="container" style="background-color:#E9ECEF">
     <div class="row text-center">
       <div class="col-sm">
-        <h5>About Us</h5>
+        <h3 style="text-decoration: underline; text-align: center; margin: 20px 0;">About Us</h3>
         <p>At e-Skills, we provide expert-led courses designed to help individuals enhance their skills and achieve success. Our mission is to make learning accessible, practical, and impactful for everyone.</p>
       </div>
       <div class="col-sm">
-        <h5>Category</h5>
+        <h3 style="text-decoration: underline; text-align: center; margin: 20px 0;">Category</h3>
         <a class="text-dark" href="#">Web Development</a><br />
         <a class="text-dark" href="#">Web Designing</a><br />
         <a class="text-dark" href="#">Android App Dev</a><br />
@@ -194,7 +194,7 @@ include('./contact.php');
         <a class="text-dark" href="#">Data Analysis</a><br />
       </div>
       <div class="col-sm">
-        <h5>Contact Us</h5>
+        <h3 style="text-decoration: underline; text-align: center; margin: 20px 0;" >Contact Us</h3>
         <p>eSkills Pvt Ltd <br> Near Chandra Petrolpump <br> Gorakhpur, Utter Pradesh <br> Ph. +91 9555392624 </p>
       </div>
     </div>

@@ -7,16 +7,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
   <link rel="stylesheet" type="text/css" href="css/all.min.css">
-
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-
   <link rel="stylesheet" type="text/css" href="css/owl.min.css">
   <link rel="stylesheet" type="text/css" href="css/owl.theme.min.css">
   <link rel="stylesheet" type="text/css" href="css/testyslider.css">
-
   <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  
   <title>e-Skills</title>
 
   <style>
@@ -28,6 +25,21 @@
     .op {
       background-color: #225470;
     }
+
+    .custom-nav-item {
+      margin-right: 15px; /* Add spacing between nav items */
+    }
+
+    @media (max-width: 576px) {
+      .navbar-nav {
+        text-align: center; /* Center nav items on small screens */
+      }
+
+      .custom-nav-item {
+        margin-right: 0; /* Remove right margin on small screens */
+        margin-bottom: 10px; /* Add bottom margin for spacing */
+      }
+    }
   </style>
 </head>
 
@@ -37,19 +49,21 @@
     <nav class="navbar navbar-expand-sm navbar-dark pl-5">
       <a href="index.php" class="navbar-brand">e-Skills</a>
       <span class="navbar-text" id="dynamicText">Learn and Implement</span>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myMenu">
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myMenu" aria-controls="myMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="myMenu">
-        <ul class="navbar-nav pl-5 custom-nav">
+        <ul class="navbar-nav ml-auto"> <!-- Align items to the right on larger screens -->
           <li class="nav-item custom-nav-item"><a href="index.php" class="nav-link">Home</a></li>
           <li class="nav-item custom-nav-item"><a href="courses.php" class="nav-link">Courses</a></li>
           <?php
           session_start();
           if (isset($_SESSION['is_login'])) {
-            echo '<li class="nav-item custom-nav-item"><a href="student/studentProfile.php" class="nav-link">My Profile</a></li> <li class="nav-item custom-nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';
+            echo '<li class="nav-item custom-nav-item"><a href="student/studentProfile.php" class="nav-link">My Profile</a></li> 
+                  <li class="nav-item custom-nav-item"><a href="logout.php" class="nav-link">Logout</a></li>';
           } else {
-            echo '<li class="nav-item custom-nav-item"><a href="#login" class="nav-link" data-toggle="modal" data-target="#stuLoginModalCenter">Login</a></li> <li class="nav-item custom-nav-item"><a href="#signup" class="nav-link" data-toggle="modal" data-target="#stuRegModalCenter">Signup</a></li>';
+            echo '<li class="nav-item custom-nav-item"><a href="#login" class="nav-link" data-toggle="modal" data-target="#stuLoginModalCenter">Login</a></li> 
+                  <li class="nav-item custom-nav-item"><a href="#signup" class="nav-link" data-toggle="modal" data-target="#stuRegModalCenter">Signup</a></li>';
           }
           ?>
           <li class="nav-item custom-nav-item"><a href="#Feedback" class="nav-link">Feedback</a></li>
@@ -82,7 +96,7 @@
       index = (index + 1) % phrases.length;
     }
 
-    setInterval(changeText, 2500); // 
+    setInterval(changeText, 2500);
   </script>
 </body>
 

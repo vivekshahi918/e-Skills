@@ -16,7 +16,7 @@
 }
 
 .remove-vid-marg {
-  margin: 0px;
+  margin-top: 80px; /* Adjust based on your header height */
   padding: 0px;
 }
 
@@ -25,10 +25,10 @@
 }
 video {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 .vid-overlay {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   height: 100%;
@@ -41,8 +41,9 @@ video {
 .vid-content {
   color: #fff;
   position: absolute;
-  top: 35%;
-  left: 35%;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center both ways */
   z-index: 2;
   text-align: center;
 }
@@ -72,24 +73,46 @@ a.social-hover:hover {
 }
 
 @media screen and (min-width: 0px) and (max-width: 700px) {
-  .my-content,
-  .txt-banner,
-  .stripe {
-    display: none;
-  } /* hide it on small screens */
-
-  .vid-content {
-    top: 12%;
-    left: 60%;
+  /* Remove display: none for .my-content to make it visible */
+  .my-content {
+    display: block; /* Ensure it's visible */
+    font-size: 1.2em; /* Reduce font size */
+    text-align: center; /* Center align text */
   }
+  
+  /* Adjust .vid-content positioning to better fit smaller screens */
+  .vid-content {
+    top: 25%; 
+    left: 38%;
+    transform: translateX(-50%);
+  }
+  
+  /* Style the button */
+  .btn {
+    font-size: 0.9em; /* Make button text smaller */ /* Adjust padding for smaller screens */
+    display: inline-block;
+    text-align: center;
+  }
+
+  /* Navigation styling */
   .custom-nav .custom-nav-item a {
     padding: 10px 20px;
     background-color: #225470;
   }
 
   .custom-nav-item:hover {
-    background-color: none;
+    background-color: transparent; /* Set to transparent instead of 'none' */
     border: none;
-    border-radius: none;
+    border-radius: 0; /* Set to 0 instead of 'none' */
+  }
+}
+
+
+@media screen and (min-width: 570px) and (max-width: 822px) {
+  .container, .row, .col, .content, .main-content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
   }
 }
